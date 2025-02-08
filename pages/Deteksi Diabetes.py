@@ -70,8 +70,8 @@ if submit_button:
 
     proba_pos = make_prediction(inputs)
     st.subheader("Probabilitas:")
-    st.write(f"*Tidak menderita:* {(1 - proba_pos) * 100:.2f}%")
-    st.write(f"*Menderita:* {proba_pos * 100:.2f}%")
+    st.write(f"Tidak menderita: {(1 - proba_pos) * 100:.2f}%")
+    st.write(f"Menderita: {proba_pos * 100:.2f}%")
 
     saran = {}
     if aktivitas_fisik == "Tidak":
