@@ -13,16 +13,16 @@ st.markdown("""
         }
         .hero-text p {
             font-size: 1.2em;
-            margin-bottom: 40px;  /* Menambah jarak antara paragraf dan tombol */
+            margin-bottom: 40px;
         }
-        .hero-image {
-            margin-left: 30px;
-            margin-top: 30px;
+        .hero-image-container {
+            text-align: right; /* Membuat gambar lebih ke kanan */
+            margin-left: 20px; /* Memberikan jarak dari teks */
         }
         .button-container {
             display: flex;
             gap: 10px;
-            margin-top: 20px; /* Menambahkan jarak antara teks dan tombol */
+            margin-top: 20px;
         }
     </style>
 """, unsafe_allow_html=True)
@@ -36,7 +36,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # HERO SECTION
-col1, col2 = st.columns([2, 1])
+col1, col2 = st.columns([3, 1])  # Membuat teks lebih besar dan gambar lebih ke kanan
 
 with col1:
     st.markdown("""
@@ -46,22 +46,22 @@ with col1:
         </div>
     """, unsafe_allow_html=True)
 
-    # Menambah jarak sebelum tombol dengan st.write("")
+    # Menambah jarak sebelum tombol
     st.write("")
     st.write("")
-    
+
     # Membuat tombol untuk berpindah ke halaman prediksi
     col_btn1, col_btn2 = st.columns(2)
-    
+
     with col_btn1:
         if st.button("Cek Diabetes", use_container_width=True):
             st.switch_page("pages/Deteksi Diabetes.py")  # Sesuaikan dengan path halaman di Streamlit
-    
+
     with col_btn2:
         if st.button("Cek Gagal Ginjal", use_container_width=True):
             st.switch_page("pages/Deteksi Gagal Ginjal.py")  # Sesuaikan dengan path halaman di Streamlit
 
 with col2:
-    st.markdown('<div class="hero-image">', unsafe_allow_html=True)
-    st.image("image/ilustrasi.png", width=300)  # Ganti dengan path gambar yang sesuai
+    st.markdown('<div class="hero-image-container">', unsafe_allow_html=True)
+    st.image("image/ilustrasi.png", width=350)  # Perbesar ukuran agar lebih menarik
     st.markdown('</div>', unsafe_allow_html=True)
