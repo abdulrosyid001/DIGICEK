@@ -92,32 +92,28 @@ if submit_button:
     highbp = convert_to_category(hipertensi)
     highchol = convert_to_category(pedal_edema)
 
-    # Pastikan usia kategori valid sebelum prediksi
-    if age_category is None:
-        st.error("Usia tidak valid. Harap masukkan usia antara 18 hingga 100 tahun.")
+    # Mengumpulkan data input dari form
+    inputs = {
+        "hemo": hemoglobin,
+        "htn": hipertensi,
+        "age": usia,
+        "bp": tekanan_darah,
+        "pe": pedal_edema,
+        "bgr": gula_darah_acak,
+    }
+
+    proba_pos = make_prediction(inputs)
+
+    # Menampilkan hasil probabilitas dengan format persentase
+    proba_pos_percentage = proba_pos * 100
+    proba_neg_percentage = (1 - proba_pos) * 100
+
+    st.subheader(f"Probabilitas:")
+    st.markdown(f"**Tidak menderita:** {proba_neg_percentage:.2f}%")
+    st.markdown(f"**Menderita:** {proba_pos_percentage:.2f}%")
+
+    # Memberikan hasil prediksi berdasarkan probabilitas
+    if proba_pos > 0.5:
+        st.success("Anda kemungkinan besar menderita.")
     else:
-        # Mengumpulkan data input dari form
-        inputs = {
-            "hemo": hemoglobin,
-            "htn": hipertensi,
-            "age": usia,
-            "bp": tekanan_darah,
-            "pe": pedal_edema,
-            "bgr": gula_darah_acak,
-        }
-
-        proba_pos = make_prediction(inputs)
-
-        # Menampilkan hasil probabilitas dengan format persentase
-        proba_pos_percentage = proba_pos * 100
-        proba_neg_percentage = (1 - proba_pos) * 100
-
-        st.subheader(f"Probabilitas:")
-        st.markdown(f"**Tidak menderita:** {proba_neg_percentage:.2f}%")
-        st.markdown(f"**Menderita:** {proba_pos_percentage:.2f}%")
-
-        # Memberikan hasil prediksi berdasarkan probabilitas
-        if proba_pos > 0.5:
-            st.success("Anda kemungkinan besar menderita.")
-        else:
-            st.success("Anda kemungkinan besar tidak menderita.")
+        st.success("Anda kemungkinan besar tidak menderita.")
