@@ -3,6 +3,14 @@ import streamlit as st
 # Konfigurasi halaman
 st.set_page_config(page_title="DIGICEK", layout="wide")
 
+# HEADER
+st.markdown("""
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background-color: #fff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); border-radius: 10px;">
+        <div style="font-size: 1.8em; font-weight: bold; color: #007bff;">DIGICEK</div>
+        <a href="#" style="padding: 8px 15px; background-color: #007bff; color: #fff; border-radius: 20px; text-decoration: none; font-weight: bold;">Kontak Kami</a>
+    </div>
+""", unsafe_allow_html=True)
+
 # Custom CSS untuk styling
 def custom_css():
     st.markdown(
