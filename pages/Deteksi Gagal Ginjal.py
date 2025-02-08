@@ -4,7 +4,7 @@ import pandas as pd
 import joblib
 
 # Memuat model yang sudah dilatih
-model = xgb.Booster(model_file="model_dan_data/kti_unmul_model_diabetes.json")
+model = xgb.Booster(model_file='model_dan_data/kti_unmul_model_gagal_ginjal.json')
 X_train = joblib.load('model_dan_data/gagal_ginjal.pkl')
 
 # UI Streamlit
