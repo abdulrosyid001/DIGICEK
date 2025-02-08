@@ -65,7 +65,7 @@ berita_data = [
 ]
 
 # CAROUSEL BERITA
-st.markdown("<h3 style='text-align: center;'>Berita Wisata</h3>", unsafe_allow_html=True)
+st.markdown("<h3 style='text-align: center;'>Berita</h3>", unsafe_allow_html=True)
 berita_cols = st.columns(len(berita_data))
 
 for idx, berita in enumerate(berita_data):
