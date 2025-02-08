@@ -61,7 +61,7 @@ with st.form(key="gagal_ginjal_form"):
     hemoglobin = st.number_input(
         "Hemoglobin",
         min_value=3,
-        max_value=18,
+        max_value=25,
         value=15,
         help="Masukkan kadar hemoglobin Anda."
     )
