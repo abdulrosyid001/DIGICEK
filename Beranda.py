@@ -6,6 +6,9 @@ st.set_page_config(page_title="DIGICEK", layout="wide")
 # Custom CSS untuk styling
 st.markdown("""
     <style>
+        .hero-text {
+            margin-left: 30px; /* Memindahkan teks lebih ke kiri */
+        }
         .hero-text h1 {
             font-size: 2.5em;
             color: #007bff;
@@ -16,8 +19,8 @@ st.markdown("""
             margin-bottom: 40px;
         }
         .hero-image-container {
-            text-align: right; /* Membuat gambar lebih ke kanan */
-            margin-left: 20px; /* Memberikan jarak dari teks */
+            text-align: right;
+            margin-left: 20px;
         }
         .button-container {
             display: flex;
@@ -36,7 +39,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # HERO SECTION
-col1, col2 = st.columns([3, 1])  # Membuat teks lebih besar dan gambar lebih ke kanan
+col1, col2 = st.columns([2.5, 1.5])  # Mengurangi kolom gambar agar teks lebih ke kiri
 
 with col1:
     st.markdown("""
@@ -46,7 +49,6 @@ with col1:
         </div>
     """, unsafe_allow_html=True)
 
-    # Menambah jarak sebelum tombol
     st.write("")
     st.write("")
 
@@ -55,13 +57,13 @@ with col1:
 
     with col_btn1:
         if st.button("Cek Diabetes", use_container_width=True):
-            st.switch_page("pages/Deteksi Diabetes.py")  # Sesuaikan dengan path halaman di Streamlit
+            st.switch_page("pages/Deteksi Diabetes.py")
 
     with col_btn2:
         if st.button("Cek Gagal Ginjal", use_container_width=True):
-            st.switch_page("pages/Deteksi Gagal Ginjal.py")  # Sesuaikan dengan path halaman di Streamlit
+            st.switch_page("pages/Deteksi Gagal Ginjal.py")
 
 with col2:
     st.markdown('<div class="hero-image-container">', unsafe_allow_html=True)
-    st.image("image/ilustrasi.png", width=350)  # Perbesar ukuran agar lebih menarik
+    st.image("image/ilustrasi.png", width=350)
     st.markdown('</div>', unsafe_allow_html=True)
