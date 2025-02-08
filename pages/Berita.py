@@ -48,12 +48,40 @@ def custom_css():
                 font-size: 14px;
                 margin: 0 10px;
             }
+            .button-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            }
+            .contact-button {
+                padding: 8px 15px;
+                background-color: #007bff;
+                color: #fff;
+                border-radius: 20px;
+                text-decoration: none;
+                font-weight: bold;
+                cursor: pointer;
+            }
         </style>
         """,
         unsafe_allow_html=True,
     )
 
 custom_css()
+
+# HEADER dengan popover untuk kontak
+col_header1, col_header2 = st.columns([1, 0.2])
+with col_header1:
+    st.markdown("<div style='font-size: 1.8em; font-weight: bold; color: #007bff;'>DIGICEK</div>", unsafe_allow_html=True)
+
+with col_header2:
+    with st.popover("📞 Kontak Kami"):
+        st.markdown("""
+        **Hubungi Kami:**  
+        📸 Instagram: [@digicek](https://instagram.com/digicek)  
+        📺 YouTube: [DIGICEK Official](https://youtube.com/digicek)  
+        📧 Email: [info@digicek.com](mailto:info@digicek.com)
+        """)
 
 # DATA BERITA
 berita_data = [
