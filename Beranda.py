@@ -16,6 +16,7 @@ st.markdown("""
             margin-bottom: 40px;  /* Menambah jarak antara paragraf dan tombol */
         }
         .hero-image {
+            margin-left: 30px;
             margin-top: 30px;
         }
         .button-container {
