@@ -20,7 +20,6 @@ st.markdown("""
         }
         .hero-image-container {
             text-align: right;
-            margin-left: 20px;
         }
         .button-container {
             display: flex;
@@ -38,8 +37,8 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-# HERO SECTION
-col1, col2 = st.columns([2.5, 1.5])  # Mengurangi kolom gambar agar teks lebih ke kiri
+# HERO SECTION (Menambahkan 1 kolom kosong di tengah)
+col1, col_empty, col2 = st.columns([2.5, 1, 1.5])
 
 with col1:
     st.markdown("""
@@ -63,6 +62,11 @@ with col1:
         if st.button("Cek Gagal Ginjal", use_container_width=True):
             st.switch_page("pages/Deteksi Gagal Ginjal.py")
 
+# Kolom kosong di tengah
+with col_empty:
+    st.write("")  # Biarkan kosong untuk memberi jarak
+
+# Kolom gambar
 with col2:
     st.markdown('<div class="hero-image-container">', unsafe_allow_html=True)
     st.image("image/ilustrasi.png", width=350)
