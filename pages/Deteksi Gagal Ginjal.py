@@ -89,8 +89,8 @@ def convert_to_category(kolom):
 
 # Prediksi jika tombol ditekan
 if submit_button:
-    highbp = convert_to_category(hipertensi)
-    highchol = convert_to_category(pedal_edema)
+    hipertensi = convert_to_category(hipertensi)
+    pedal_edema = convert_to_category(pedal_edema)
 
     # Mengumpulkan data input dari form
     inputs = {
