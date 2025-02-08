@@ -47,14 +47,6 @@ def make_prediction(inputs):
     pred_proba = model.predict(xgb.DMatrix(df, enable_categorical=True))
     return float(pred_proba[0])
 
-# Fungsi konversi kategori
-def convert_to_category(value, mapping):
-    return mapping.get(value, None)
-
-age_mapping = {"18-24": 1, "25-29": 2, "30-34": 3, "35-39": 4, "40-44": 5, "45-49": 6, "50-54": 7, "55-59": 8, "60-64": 9, "65-69": 10, "70-74": 11, "75-79": 12, "80+": 13}
-kesehatan_mapping = {"Luar Biasa": 1, "Sangat Bagus": 2, "Bagus": 3, "Cukup": 4, "Jelek": 5}
-edukasi_mapping = {"Tidak Sekolah": 1, "SD": 2, "SMP": 3, "SMA": 4, "Kuliah tidak lulus": 5, "Sarjana": 6}
-
 if submit_button:
     bmi = berat_badan / ((tinggi_badan / 100) ** 2)
     inputs = {
@@ -67,48 +59,39 @@ if submit_button:
         "Fruits": 1 if buah == "Ya" else 0,
         "Veggies": 1 if sayur == "Ya" else 0,
         "HvyAlcoholConsump": 1 if alkohol == "Ya" else 0,
-        "GenHlth": convert_to_category(kesehatan, kesehatan_mapping),
+        "GenHlth": kesehatan,
         "MentHlth": kesehatan_mental,
         "PhysHlth": kesehatan_fisik,
         "DiffWalk": 1 if jalan_naik_turun_tangga == "Ya" else 0,
         "Sex": 1 if jenis_kelamin == "Laki-laki" else 0,
         "Age": usia,
-        "Education": convert_to_category(pendidikan, edukasi_mapping)
+        "Education": pendidikan
     }
 
     proba_pos = make_prediction(inputs)
-    proba_pos_percentage = proba_pos * 100
-    proba_neg_percentage = (1 - proba_pos) * 100
-
     st.subheader("Probabilitas:")
-    st.markdown(f"*Tidak menderita:* {proba_neg_percentage:.2f}%")
-    st.markdown(f"*Menderita:* {proba_pos_percentage:.2f}%")
+    st.write(f"*Tidak menderita:* {(1 - proba_pos) * 100:.2f}%")
+    st.write(f"*Menderita:* {proba_pos * 100:.2f}%")
 
-    if proba_pos > 0.5:
-        st.success("Anda kemungkinan besar menderita diabetes.")
-    else:
-        st.success("Anda kemungkinan besar tidak menderita diabetes.")
-
-    # Menampilkan saran berdasarkan input
-    saran = []
+    saran = {}
     if aktivitas_fisik == "Tidak":
-        saran.append("Lakukan aktivitas fisik.")
+        saran["Aktivitas Fisik"] = "Lakukan aktivitas fisik."
     if buah == "Tidak":
-        saran.append("Makanlah buah-buahan.")
+        saran["Makan Buah-buahan"] = "Makanlah buah-buahan."
     if sayur == "Tidak":
-        saran.append("Makanlah sayur-sayuran.")
+        saran["Makan Sayur-sayuran"] = "Makanlah sayur-sayuran."
     if smoker == "Ya":
-        saran.append("Kurangi dan hilangkan kebiasaan merokok.")
+        saran["Perokok Aktif"] = "Kurangi dan hilangkan kebiasaan merokok."
     if alkohol == "Ya":
-        saran.append("Kurangi konsumsi alkohol berlebih.")
+        saran["Konsumsi Alkohol Berlebihan"] = "Kurangi konsumsi alkohol berlebih."
     if bp == "Ya":
-        saran.append("Kurangi konsumsi garam, turunkan berat badan, makan sehat, dan rajin berolahraga.")
+        saran["Tekanan Darah Tinggi"] = "Kurangi konsumsi garam, turunkan berat badan, makan sehat, dan rajin berolahraga."
     if kolesterol == "Ya":
-        saran.append("Hindari makanan yang digoreng, batasi makanan berlemak, dan olahraga teratur.")
+        saran["Kolesterol Tinggi"] = "Hindari makanan yang digoreng, batasi makanan berlemak, dan olahraga teratur."
     if HeartDiseaseorAttack == "Ya":
-        saran.append("Olahraga rutin, berhenti merokok, dan makan makanan bergizi seimbang.")
+        saran["Penyakit Jantung"] = "Olahraga rutin, berhenti merokok, dan makan makanan bergizi seimbang."
 
     if saran:
         st.subheader("Saran untuk Anda:")
-        for s in saran:
-            st.write(f"- {s}")
+        for kondisi, rekomendasi in saran.items():
+            st.write(f"{kondisi}:** {rekomendasi}")
