@@ -3,41 +3,6 @@ import xgboost as xgb
 import pandas as pd
 import joblib
 
-st.markdown("""
-        .button-container {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        .contact-button {
-            padding: 8px 15px;
-            background-color: #007bff;
-            color: #fff;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: bold;
-            cursor: pointer;
-        }
-    </style>
-""", unsafe_allow_html=True)
-
-# Konfigurasi halaman
-st.set_page_config(page_title="DIGICEK", layout="wide")
-
-# HEADER dengan popover untuk kontak
-col_header1, col_header2 = st.columns([1, 0.2])
-with col_header1:
-    st.markdown("<div style='font-size: 1.8em; font-weight: bold; color: #007bff;'>DIGICEK</div>", unsafe_allow_html=True)
-
-with col_header2:
-    with st.popover("📞 Kontak Kami"):
-        st.markdown("""
-        **Hubungi Kami:**  
-        📸 Instagram: [@digicek](https://instagram.com/digicek)  
-        📺 YouTube: [DIGICEK Official](https://youtube.com/digicek)  
-        📧 Email: [info@digicek.com](mailto:info@digicek.com)
-        """)
-
 # Memuat model yang sudah dilatih
 model = xgb.Booster(model_file="model_dan_data/kti_unmul_model_gagal_ginjal.json")
 X_train = joblib.load("model_dan_data/gagal_ginjal.pkl")
