@@ -73,7 +73,7 @@ berita_data = [
 ]
 
 # CAROUSEL BERITA
-st.title("Deteksi Gagal Ginjal")
+st.title("Berita")
 
 berita_cols = st.columns(len(berita_data))
 
