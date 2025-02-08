@@ -3,6 +3,9 @@ import xgboost as xgb
 import pandas as pd
 import joblib
 
+# UI Streamlit
+st.set_page_config(page_title="DIGICEK", page_icon="", layout="wide")
+
 # Custom CSS untuk styling
 st.markdown("""
     <style>
