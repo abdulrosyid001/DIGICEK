@@ -13,7 +13,7 @@ st.set_page_config(page_title="DIGICEK", page_icon="", layout="wide")
 st.title("Deteksi Gagal Ginjal")
 
 # Membuat input form dengan beberapa kategori
-with st.form(key="narkolepsi_form"):
+with st.form(key="gagal_ginjal_form"):
     st.header("Informasi Pengguna")
 
     usia = st.number_input(
@@ -114,6 +114,6 @@ if submit_button:
 
     # Memberikan hasil prediksi berdasarkan probabilitas
     if proba_pos > 0.5:
-        st.success("Anda kemungkinan besar menderita.")
+        st.success("Anda kemungkinan besar menderita gagal ginjal.")
     else:
-        st.success("Anda kemungkinan besar tidak menderita.")
+        st.success("Anda kemungkinan besar tidak menderita gagal ginjal.")
