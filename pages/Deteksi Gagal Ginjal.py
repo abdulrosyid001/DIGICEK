@@ -34,7 +34,7 @@ with col_header1:
 with col_header2:
     with st.popover("📞 Kontak Kami"):
         st.markdown("""
-        **Hubungi Kami:**  
+        *Hubungi Kami:*  
         📸 Instagram: [@digicek](https://instagram.com/digicek)  
         📺 YouTube: [DIGICEK Official](https://youtube.com/digicek)  
         📧 Email: [info@digicek.com](mailto:info@digicek.com)
@@ -55,7 +55,7 @@ with st.form(key="gagal_ginjal_form"):
         min_value=2,
         max_value=90,
         value=20,
-        help="..."
+        help="Masukkan usia Anda."
     )
 
     hemoglobin = st.number_input(
@@ -63,7 +63,7 @@ with st.form(key="gagal_ginjal_form"):
         min_value=3,
         max_value=18,
         value=15,
-        help="..."
+        help="Masukkan kadar hemoglobin Anda."
     )
 
     tekanan_darah = st.number_input(
@@ -71,7 +71,7 @@ with st.form(key="gagal_ginjal_form"):
         min_value=50,
         max_value=180,
         value=90,
-        help="..."
+        help="Masukkan tekanan darah Anda."
     )
 
     gula_darah_acak = st.number_input(
@@ -79,19 +79,19 @@ with st.form(key="gagal_ginjal_form"):
         min_value=20,
         max_value=500,
         value=150,
-        help="..."
+        help="Masukkan kadar gula darah acak Anda."
     )
 
     hipertensi = st.selectbox(
         "Hipertensi",
         ["Tidak", "Ya"],
-        help="..."
+        help="Apakah Anda memiliki hipertensi?"
     )
 
     pedal_edema = st.selectbox(
         "Pedal Edema",
         ["Tidak", "Ya"],
-        help="..."
+        help="Apakah Anda mengalami pedal edema?"
     )
 
     submit_button = st.form_submit_button("Prediksi")
@@ -113,7 +113,7 @@ def make_prediction(inputs):
 
     # Menggunakan predict_proba() untuk mendapatkan probabilitas
     pred_proba = model.predict(xgb.DMatrix(df, enable_categorical=True))
-    return float(pred_proba[0])  # Mengembalikan probabilitas untuk kelas 1 (narkolepsi)
+    return float(pred_proba[0])  # Mengembalikan probabilitas untuk kelas 1 (gagal ginjal)
     
 def convert_to_category(kolom):
     if kolom == 'Tidak':
@@ -142,12 +142,37 @@ if submit_button:
     proba_pos_percentage = proba_pos * 100
     proba_neg_percentage = (1 - proba_pos) * 100
 
-    st.subheader(f"Probabilitas:")
-    st.markdown(f"**Tidak menderita:** {proba_neg_percentage:.2f}%")
-    st.markdown(f"**Menderita:** {proba_pos_percentage:.2f}%")
+    st.subheader(f"Probabilitas:") 
+    st.markdown(f"*Tidak menderita:* {proba_neg_percentage:.2f}%")
+    st.markdown(f"*Menderita:* {proba_pos_percentage:.2f}%")
 
     # Memberikan hasil prediksi berdasarkan probabilitas
     if proba_pos > 0.5:
         st.success("Anda kemungkinan besar menderita gagal ginjal.")
     else:
         st.success("Anda kemungkinan besar tidak menderita gagal ginjal.")
+
+    # Menambahkan kondisi berdasarkan umur, hemoglobin, tekanan darah, dan gula darah
+    if usia <= 18:
+        if hemoglobin < 11:
+            st.warning("Hemoglobin rendah sebaiknya Anda perlu meningkatkan asupan makanan yang kaya zat besi, vitamin B12, dan folat, seperti: Hati sapi, hati ayam, dan daging; Makanan laut: ikan, udang, kerrang; Sayuran hijau: bayam, brokoli, kale; Kacang-kacangan: kacang hijau, kacang merah, dan kedelai.")
+        elif hemoglobin > 14:
+            st.warning("Hemoglobin tinggi sebaiknya Anda perlu melakukan: Konsumsi air putih 2L per hari; Stop merokok atau hindari paparan asap rokok; Tidak sembarang minum obat; Hindari makanan tinggi zat besi.")
+    elif usia <= 64:
+        if hemoglobin < 12:
+            st.warning("Hemoglobin rendah sebaiknya Anda perlu meningkatkan asupan makanan yang kaya zat besi, vitamin B12, dan folat, seperti: Hati sapi, hati ayam, dan daging; Makanan laut: ikan, udang, kerrang; Sayuran hijau: bayam, brokoli, kale; Kacang-kacangan: kacang hijau, kacang merah, dan kedelai.")
+        elif hemoglobin > 18:
+            st.warning("Hemoglobin tinggi sebaiknya Anda perlu melakukan: Konsumsi air putih 2L per hari; Stop merokok atau hindari paparan asap rokok; Tidak sembarang minum obat; Hindari makanan tinggi zat besi.")
+    else:  # Usia >= 65
+        if hemoglobin < 11:
+            st.warning("Hemoglobin rendah sebaiknya Anda perlu meningkatkan asupan makanan yang kaya zat besi, vitamin B12, dan folat, seperti: Hati sapi, hati ayam, dan daging; Makanan laut: ikan, udang, kerrang; Sayuran hijau: bayam, brokoli, kale; Kacang-kacangan: kacang hijau, kacang merah, dan kedelai.")
+        elif hemoglobin > 16:
+            st.warning("Hemoglobin tinggi sebaiknya Anda perlu melakukan: Konsumsi air putih 2L per hari; Stop merokok atau hindari paparan asap rokok; Tidak sembarang minum obat; Hindari makanan tinggi zat besi.")
+
+    # Menambahkan kondisi untuk tekanan darah
+    if tekanan_darah > 80:
+        st.warning("Tekanan darah tinggi sebaiknya Anda perlu kurangi konsumsi garam, olahraga rutin, kelola stress, dan tingkatkan konsumsi kalium seperti kentang, pisang, dan bayam.")
+
+    # Menambahkan kondisi untuk gula darah acak
+    if gula_darah_acak > 200:
+        st.warning("Gula darah tinggi sebaiknya Anda perlu batasi konsumsi karbohidrat sederhana (seperti gula dan tepung halus), pilih makanan rendah indeks glikemik (seperti sayuran, biji-bijian utuh, dan protein sehat), olahraga teratur, hindari rokok, dan hindari alkohol.")
