@@ -151,28 +151,36 @@ if submit_button:
         st.success("Anda kemungkinan besar menderita gagal ginjal.")
     else:
         st.success("Anda kemungkinan besar tidak menderita gagal ginjal.")
+    
+    saran = []
 
-    # Menambahkan kondisi berdasarkan umur, hemoglobin, tekanan darah, dan gula darah
+    # Checking for Hemoglobin levels based on age
     if usia <= 18:
         if hemoglobin < 11:
-            st.warning("Hemoglobin rendah sebaiknya Anda perlu meningkatkan asupan makanan yang kaya zat besi, vitamin B12, dan folat, seperti: Hati sapi, hati ayam, dan daging; Makanan laut: ikan, udang, kerrang; Sayuran hijau: bayam, brokoli, kale; Kacang-kacangan: kacang hijau, kacang merah, dan kedelai.")
+            saran.append("Hemoglobin rendah: Meningkatkan asupan makanan yang kaya zat besi, vitamin B12, dan folat, seperti: Hati sapi, hati ayam, dan daging; Makanan laut: ikan, udang, kerrang; Sayuran hijau: bayam, brokoli, kale; Kacang-kacangan: kacang hijau, kacang merah, dan kedelai.")
         elif hemoglobin > 14:
-            st.warning("Hemoglobin tinggi sebaiknya Anda perlu melakukan: Konsumsi air putih 2L per hari; Stop merokok atau hindari paparan asap rokok; Tidak sembarang minum obat; Hindari makanan tinggi zat besi.")
+            saran.append("Hemoglobin tinggi: Konsumsi air putih 2L per hari; Stop merokok atau hindari paparan asap rokok; Tidak sembarang minum obat; Hindari makanan tinggi zat besi.")
     elif usia <= 64:
         if hemoglobin < 12:
-            st.warning("Hemoglobin rendah sebaiknya Anda perlu meningkatkan asupan makanan yang kaya zat besi, vitamin B12, dan folat, seperti: Hati sapi, hati ayam, dan daging; Makanan laut: ikan, udang, kerrang; Sayuran hijau: bayam, brokoli, kale; Kacang-kacangan: kacang hijau, kacang merah, dan kedelai.")
+            saran.append("Hemoglobin rendah: Meningkatkan asupan makanan yang kaya zat besi, vitamin B12, dan folat, seperti: Hati sapi, hati ayam, dan daging; Makanan laut: ikan, udang, kerrang; Sayuran hijau: bayam, brokoli, kale; Kacang-kacangan: kacang hijau, kacang merah, dan kedelai.")
         elif hemoglobin > 18:
-            st.warning("Hemoglobin tinggi sebaiknya Anda perlu melakukan: Konsumsi air putih 2L per hari; Stop merokok atau hindari paparan asap rokok; Tidak sembarang minum obat; Hindari makanan tinggi zat besi.")
+            saran.append("Hemoglobin tinggi: Konsumsi air putih 2L per hari; Stop merokok atau hindari paparan asap rokok; Tidak sembarang minum obat; Hindari makanan tinggi zat besi.")
     else:  # Usia >= 65
         if hemoglobin < 11:
-            st.warning("Hemoglobin rendah sebaiknya Anda perlu meningkatkan asupan makanan yang kaya zat besi, vitamin B12, dan folat, seperti: Hati sapi, hati ayam, dan daging; Makanan laut: ikan, udang, kerrang; Sayuran hijau: bayam, brokoli, kale; Kacang-kacangan: kacang hijau, kacang merah, dan kedelai.")
+            saran.append("Hemoglobin rendah: Meningkatkan asupan makanan yang kaya zat besi, vitamin B12, dan folat, seperti: Hati sapi, hati ayam, dan daging; Makanan laut: ikan, udang, kerrang; Sayuran hijau: bayam, brokoli, kale; Kacang-kacangan: kacang hijau, kacang merah, dan kedelai.")
         elif hemoglobin > 16:
-            st.warning("Hemoglobin tinggi sebaiknya Anda perlu melakukan: Konsumsi air putih 2L per hari; Stop merokok atau hindari paparan asap rokok; Tidak sembarang minum obat; Hindari makanan tinggi zat besi.")
+            saran.append("Hemoglobin tinggi: Konsumsi air putih 2L per hari; Stop merokok atau hindari paparan asap rokok; Tidak sembarang minum obat; Hindari makanan tinggi zat besi.")
 
     # Menambahkan kondisi untuk tekanan darah
     if tekanan_darah > 80:
-        st.warning("Tekanan darah tinggi sebaiknya Anda perlu kurangi konsumsi garam, olahraga rutin, kelola stress, dan tingkatkan konsumsi kalium seperti kentang, pisang, dan bayam.")
+        saran.append("Tekanan darah tinggi: Kurangi konsumsi garam, olahraga rutin, kelola stress, dan tingkatkan konsumsi kalium seperti kentang, pisang, dan bayam.")
 
     # Menambahkan kondisi untuk gula darah acak
     if gula_darah_acak > 200:
-        st.warning("Gula darah tinggi sebaiknya Anda perlu batasi konsumsi karbohidrat sederhana (seperti gula dan tepung halus), pilih makanan rendah indeks glikemik (seperti sayuran, biji-bijian utuh, dan protein sehat), olahraga teratur, hindari rokok, dan hindari alkohol.")
+        saran.append("Gula darah tinggi: Batasi konsumsi karbohidrat sederhana (seperti gula dan tepung halus), pilih makanan rendah indeks glikemik (seperti sayuran, biji-bijian utuh, dan protein sehat), olahraga teratur, hindari rokok, dan hindari alkohol.")
+
+    # Outputting suggestions if there are any
+    if saran:
+        st.subheader("Saran untuk Anda:")
+        for s in saran:
+            st.write(f"- {s}")
