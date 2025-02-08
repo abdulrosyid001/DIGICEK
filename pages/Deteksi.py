@@ -19,7 +19,7 @@ st.set_page_config(page_title="DIGICEK", page_icon="", layout="wide")
 #     </style>
 # """, unsafe_allow_html=True)
 
-st.title("Deteksi Gagal Ginjal dan Diabetes")
+st.title("Deteksi Diabetes")
 
 # # Deskripsi yang lebih menarik
 # st.write(
