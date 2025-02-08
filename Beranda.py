@@ -128,7 +128,7 @@ with col1:
 
     # Tombol untuk menuju ke halaman prediksi di Streamlit
     if st.button("Cek Sekarang"):
-        st.switch_page("pages/Deteksi.py")  # Gantilah dengan halaman Streamlit Anda
+        st.switch_page("pages/Deteksi Diabetes.py")  # Gantilah dengan halaman Streamlit Anda
 
 with col2:
     st.markdown('<div class="hero-image">', unsafe_allow_html=True)
