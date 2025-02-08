@@ -5,7 +5,7 @@ import joblib
 
 # Memuat model yang sudah dilatih
 model = xgb.Booster(model_file="model_dan_data/kti_unmul_model_diabetes.json")
-X_train = joblib.load("model_dan_data/train_data.pkl")
+X_train = joblib.load('model_dan_data/gagal_ginjal.pkl')
 
 # UI Streamlit
 st.set_page_config(page_title="DIGICEK", page_icon="", layout="wide")
