@@ -1,5 +1,23 @@
 import streamlit as st
 
+st.markdown("""
+        .button-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .contact-button {
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
 # Konfigurasi halaman
 st.set_page_config(page_title="DIGICEK", layout="wide")
 
