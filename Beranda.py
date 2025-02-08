@@ -26,16 +26,31 @@ st.markdown("""
             gap: 10px;
             margin-top: 20px;
         }
+        .contact-button {
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
     </style>
 """, unsafe_allow_html=True)
 
-# HEADER
-st.markdown("""
-    <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background-color: #fff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); border-radius: 10px;">
-        <div style="font-size: 1.8em; font-weight: bold; color: #007bff;">DIGICEK</div>
-        <a href="#" style="padding: 8px 15px; background-color: #007bff; color: #fff; border-radius: 20px; text-decoration: none; font-weight: bold;">Kontak Kami</a>
-    </div>
-""", unsafe_allow_html=True)
+# HEADER dengan popover untuk kontak
+col_header1, col_header2 = st.columns([1, 0.2])
+with col_header1:
+    st.markdown("<div style='font-size: 1.8em; font-weight: bold; color: #007bff;'>DIGICEK</div>", unsafe_allow_html=True)
+
+with col_header2:
+    with st.popover("📞 Kontak Kami"):
+        st.markdown("""
+        **Hubungi Kami:**  
+        📸 Instagram: [@digicek](https://instagram.com/digicek)  
+        📺 YouTube: [DIGICEK Official](https://youtube.com/digicek)  
+        📧 Email: [info@digicek.com](mailto:info@digicek.com)
+        """)
 
 # HERO SECTION (Menambahkan 1 kolom kosong di tengah)
 col1, col_empty, col2 = st.columns([2.5, 1, 1.5])
