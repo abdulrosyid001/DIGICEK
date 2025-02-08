@@ -13,7 +13,7 @@ st.markdown("""
         }
         .hero-text p {
             font-size: 1.2em;
-            margin-bottom: 20px;
+            margin-bottom: 40px;  /* Menambah jarak antara paragraf dan tombol */
         }
         .hero-image {
             margin-top: 50px;
@@ -21,6 +21,7 @@ st.markdown("""
         .button-container {
             display: flex;
             gap: 10px;
+            margin-top: 20px; /* Menambahkan jarak antara teks dan tombol */
         }
     </style>
 """, unsafe_allow_html=True)
@@ -44,6 +45,10 @@ with col1:
         </div>
     """, unsafe_allow_html=True)
 
+    # Menambah jarak sebelum tombol dengan st.write("")
+    st.write("")
+    st.write("")
+    
     # Membuat tombol untuk berpindah ke halaman prediksi
     col_btn1, col_btn2 = st.columns(2)
     
