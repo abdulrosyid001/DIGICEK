@@ -3,6 +3,8 @@ import xgboost as xgb
 import pandas as pd
 import joblib
 
+# UI Streamlit
+st.set_page_config(page_title="DIGICEK", page_icon="", layout="wide")
 
 # Custom CSS untuk styling
 st.markdown("""
@@ -41,17 +43,6 @@ with col_header2:
 # Memuat model yang sudah dilatih
 model = xgb.Booster(model_file="model_dan_data/kti_unmul_model_gagal_ginjal.json")
 X_train = joblib.load("model_dan_data/gagal_ginjal.pkl")
-
-# UI Streamlit
-st.set_page_config(page_title="DIGICEK", page_icon="", layout="wide")
-
-# HEADER
-st.markdown("""
-    <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background-color: #fff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); border-radius: 10px;">
-        <div style="font-size: 1.8em; font-weight: bold; color: #007bff;">DIGICEK</div>
-        <a href="#" style="padding: 8px 15px; background-color: #007bff; color: #fff; border-radius: 20px; text-decoration: none; font-weight: bold;">Kontak Kami</a>
-    </div>
-""", unsafe_allow_html=True)
 
 st.title("Deteksi Gagal Ginjal")
 
