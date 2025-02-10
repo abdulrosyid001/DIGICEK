@@ -55,7 +55,7 @@ with st.form(key="gagal_ginjal_form"):
         min_value=2,
         max_value=90,
         value=20,
-        help="Masukkan usia Anda."
+        help="Berapa usia Anda saat ini (dalam tahun)?"
     )
 
     hemoglobin = st.number_input(
@@ -63,7 +63,7 @@ with st.form(key="gagal_ginjal_form"):
         min_value=3,
         max_value=25,
         value=15,
-        help="Masukkan kadar hemoglobin Anda."
+        help="Berapa kadar hemoglobin Anda?"
     )
 
     tekanan_darah = st.number_input(
@@ -71,7 +71,7 @@ with st.form(key="gagal_ginjal_form"):
         min_value=50,
         max_value=180,
         value=90,
-        help="Masukkan tekanan darah Anda."
+        help="Berapa tekanan darah Anda?"
     )
 
     gula_darah_acak = st.number_input(
@@ -79,13 +79,13 @@ with st.form(key="gagal_ginjal_form"):
         min_value=20,
         max_value=500,
         value=150,
-        help="Masukkan kadar gula darah acak Anda."
+        help="Berapa kadar gula darah acak Anda?"
     )
 
     hipertensi = st.selectbox(
         "Hipertensi",
         ["Tidak", "Ya"],
-        help="Apakah Anda memiliki hipertensi?"
+        help="Apakah Anda memiliki hipertensi atau tekanan darah tinggi?"
     )
 
     pedal_edema = st.selectbox(
