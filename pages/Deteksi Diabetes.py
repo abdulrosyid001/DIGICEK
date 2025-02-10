@@ -53,7 +53,7 @@ with st.form(key="diabetes_form"):
     usia = st.number_input("Usia", min_value=1, max_value=100, value=20, help = "Berapa usia Anda saat ini  (dalam tahun)?")
     jenis_kelamin = st.selectbox("Jenis Kelamin", ["Perempuan", "Laki-laki"], help = "Apakah jenis kelamin Anda?")
     pendidikan = st.selectbox("Pendidikan Terakhir", ["Tidak Sekolah", "SD", "SMP", "SMA", "Kuliah tidak lulus", "Sarjana"], help = "Apakah pendidikan terakhir yang Anda tempuh?")
-    berat_badan = st.number_input("Berat Badan (Kg)", min_value=1, max_value=200, value=60, help= "Berapa berat badan Anda saat ini (dalam Kg)?")
+    berat_badan = st.number_input("Berat Badan (Kg)", min_value=1, max_value=200, value=60, help= "Berapa berat badan Anda saat ini (dalam kg)?")
     tinggi_badan = st.number_input("Tinggi Badan (cm)", min_value=1, max_value=250, value=170,help = "Berapa tinggi badan Anda saat ini (dalam cm)?")
 
     st.header("Kebiasaan Sehari-hari")
