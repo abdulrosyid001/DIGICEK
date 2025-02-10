@@ -70,7 +70,7 @@ with st.form(key="diabetes_form"):
     kesehatan_fisik = st.number_input("Fisik yang Tidak Sehat (Hari)", min_value=0, max_value=30, value=15,help = "Berapa hari dalam sebulan Anda mengalami sakit fisik dan cedera?")
     bp = st.selectbox("Tekanan Darah Tinggi", ["Tidak", "Ya"],help = "Apakah Anda mengalami tekanan darah tinggi?")
     kolesterol = st.selectbox("Kolesterol Tinggi", ["Tidak", "Ya"],help = "Apakah Anda mengalami kolesterol tinggi?")
-    HeartDiseaseorAttack = st.selectbox("Penyakit Jantung", ["Tidak", "Ya"], help = "Apakah Anda mengalamai sakit jantung atau serangan jantung?")
+    HeartDiseaseorAttack = st.selectbox("Penyakit Jantung", ["Tidak", "Ya"], help = "Apakah Anda mengalami sakit jantung atau serangan jantung?")
 
     submit_button = st.form_submit_button("Prediksi")
 
