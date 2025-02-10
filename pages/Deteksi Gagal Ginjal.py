@@ -46,6 +46,12 @@ X_train = joblib.load("model_dan_data/gagal_ginjal.pkl")
 
 st.title("Deteksi Gagal Ginjal")
 
+st.write(
+    "Isi formulir berikut untuk mengetahui kemungkinan Anda mengidap gagal ginjal. "
+    "Data yang Anda masukkan akan digunakan untuk memberikan hasil prediksi yang akurat. "
+    "Jika Anda kurang paham tentang variabel yang dibutuhkan, Anda dapat mengklik tanda '?' untuk penjelasan lebih lanjut."
+)
+
 # Membuat input form dengan beberapa kategori
 with st.form(key="gagal_ginjal_form"):
     st.header("Informasi Pengguna")
