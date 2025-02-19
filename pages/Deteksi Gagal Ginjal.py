@@ -58,7 +58,7 @@ with st.form(key="gagal_ginjal_form"):
 
     usia = st.number_input(
         "Usia",
-        min_value=2,
+        min_value=1,
         max_value=90,
         value=20,
         help="Berapa usia Anda saat ini (dalam tahun)?"
