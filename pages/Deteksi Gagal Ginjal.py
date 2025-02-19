@@ -26,41 +26,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Tombol Prediksi yang lebih menarik dengan CSS
-submit_button = st.form_submit_button(
-    "",
-    help="Klik untuk melihat hasil prediksi"
-)
-
-st.markdown("""
-    <style>
-    div.stButton > button:first-child {
-        background-color: white;
-        color: #007bff;
-        border: 2px solid #007bff;
-        padding: 12px 0;
-        font-size: 16px;
-        font-weight: bold;
-        border-radius: 8px;
-        width: 100%;
-        transition: background-color 0.3s, color 0.3s;
-    }
-    div.stButton > button:first-child:hover {
-        background-color: #007bff;
-        color: white;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
-st.markdown(
-    """
-    <div style="display: flex; justify-content: center; margin-top: -20px;">
-        <button type="submit" form="gagal_ginjal_form" class="stButton" style="width: 100%;">Prediksi</button>
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
-
 # HEADER dengan popover untuk kontak
 col_header1, col_header2 = st.columns([1, 0.2])
 with col_header1:
